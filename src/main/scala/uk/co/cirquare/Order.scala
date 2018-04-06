@@ -4,9 +4,9 @@ import scala.collection.mutable.ListBuffer
 
 class Order {
 
-  val items:ListBuffer[MenuItem[Double]] = ListBuffer[MenuItem[Double]]()
+  val items:ListBuffer[Item[Double, ItemType.Value]] = ListBuffer[Item[Double, ItemType.Value]]()
 
-  def add(item: MenuItem[Double]) = {
+  def add(item: Item[Double, ItemType.Value]) = {
 
     items += item
   }
@@ -14,4 +14,8 @@ class Order {
   def calculateBill: Double ={
     return items.map(_.price()).sum
   }
+  /*
+  def serviceCharge: Double ={
+    items.map(_.itemType)
+  }*/
 }

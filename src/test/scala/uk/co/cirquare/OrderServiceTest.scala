@@ -6,9 +6,11 @@ class OrderServiceTest extends FlatSpec with Matchers {
 
   "Order " should "give total price" in {
     val order = new Order
-    order.add(new DrinkItem(name = "Cola", 0.5,itemType = ItemType.COLD))
-    order.add(new DrinkItem(name = "Coffee", 1,itemType = ItemType.COLD))
-    order.add(new FoodItem(name = "Cheese Sandwich", 2.00, itemType = ItemType.COLD))
+    new MenuItem(name = "", iprice = 1, itype = ItemType.COLD)
+
+    order.add(new MenuItem(name = "Cola", 0.5,itype = ItemType.COLD))
+    order.add(new MenuItem(name = "Coffee", 1,itype = ItemType.COLD))
+    order.add(new MenuItem(name = "Cheese Sandwich", 2.00, itype = ItemType.COLD))
 
     assert(order.calculateBill == 3.5)
   }

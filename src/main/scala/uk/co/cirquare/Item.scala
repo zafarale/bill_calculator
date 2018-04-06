@@ -1,30 +1,27 @@
 package uk.co.cirquare
 
-
-trait MenuItem[A]{
-
-  def price(): A
-  //var itemType: ItemType.Value = ItemType.COLD;
-}
-
 object ItemType extends Enumeration{
   val HOT, COLD = Value
 }
 
+trait Item[A, B]{
 
-case class FoodItem(name: String, itemPrice: Double, itemType: ItemType.Value) extends MenuItem[Double]{
+  def price(): A
 
-  override def price(): Double =  {
-    return this.itemPrice;
-  }
+  def itemType(): B
 }
 
 
 
+class MenuItem(name: String, iprice: Double, itype: ItemType.Value) extends Item[Double, ItemType.Value] {
 
-case class DrinkItem(name: String, itemPrice: Double, itemType: ItemType.Value) extends MenuItem[Double]{
+  override def price(): Double = {
+    return this.iprice;
+  }
 
-  override def price(): Double =  {
-    return this.itemPrice;
+  override def itemType(): ItemType.Value = {
+    return this.itype;
   }
 }
+
+
